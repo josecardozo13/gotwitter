@@ -20,6 +20,7 @@ func Manejadores() {
 	router.HandleFunc("/verPerfil", middlew.ChequeoBD(middlew.ValidoJWT(routers.BuscoPerfil))).Methods("GET")
 	router.HandleFunc("/modificarPerfil", middlew.ChequeoBD(middlew.ValidoJWT(routers.ModificarPerfil))).Methods("PUT")
 	router.HandleFunc("/tweet", middlew.ChequeoBD(middlew.ValidoJWT(routers.GraboTweet))).Methods("POST")
+	router.HandleFunc("/leoTweets", middlew.ChequeoBD(middlew.ValidoJWT(routers.DevuelvoTweet))).Methods("GET")
 
 	/*PORT := os.Getenv("PORT")
 	if PORT == "" {
@@ -53,10 +54,6 @@ func setupCors(r *mux.Router) http.Handler {
 			"http://localhost:3000",
 			"http://localhost:8080",
 			"http://localhost:8081",
-			"http://sils.com.ar",
-			"https://sils.com.ar",
-			"http://*.sils.com.ar",
-			"https://*.sils.com.ar",
 		},
 		AllowedHeaders:   []string{"Authorization", "Content-Type", "X-Session-Info"},
 		AllowCredentials: true,
