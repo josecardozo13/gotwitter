@@ -3,7 +3,6 @@ package bd
 import (
 	"context"
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/josecardozo13/gotwitter/models"
@@ -28,7 +27,6 @@ func ConsultoRelacion(t models.Relacion) (bool, error) {
 	err := col.FindOne(ctx, condicion).Decode(&resultado)
 	if err != nil {
 		fmt.Println(err.Error())
-		log.Fatal(err.Error())
 		return false, err
 	}
 	return true, nil
